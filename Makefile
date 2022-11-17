@@ -4,12 +4,11 @@ CC = clang
 override CFLAGS += -g -Wno-everything -pthread -lm
 
 SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' -print)
-HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
 
-main: $(SRCS) $(HEADERS)
+main: $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o "$@"
 
-main-debug: $(SRCS) $(HEADERS)
+main-debug: $(SRCS)
 	$(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
 
 clean:
